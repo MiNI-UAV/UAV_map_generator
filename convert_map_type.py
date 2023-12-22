@@ -1,6 +1,6 @@
 import subprocess
 
-osm2world_path = "OSM2World-master/target/osm2world-0.4.0-SNAPSHOT.jar"
+osm2world_path = "OSM2World/target/osm2world-0.4.0-SNAPSHOT.jar"
 config_file = "config.properties"
 
 def run_osm2world_command(input_file, output_file):
