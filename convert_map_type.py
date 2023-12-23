@@ -29,6 +29,6 @@ if __name__ == "__main__":
     # Example usage
     input_file = "map.osm"
     convert_map_to_embedded_gltf(input_file)
-    convert_map_to_obj(input_file)
-    convert_embedded_gltf_to_separated_gltf("map.gltf", "model.gltf")
+    #convert_map_to_obj(input_file)
+    #convert_embedded_gltf_to_separated_gltf("map.gltf", "model.gltf")
     

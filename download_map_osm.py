@@ -17,5 +17,5 @@ def download_file_with_bbox(bbox : list[float], destination : str):
 if __name__ == "__main__":
     # Example usage
     bbox_coordinates = [23, 50, 23.1, 50.1]
-    destination_file = "downloaded_file.osm"
+    destination_file = "map.osm"
     download_file_with_bbox(bbox_coordinates, destination_file)

@@ -2,17 +2,18 @@ from datetime import datetime
 from os import mkdir, rmdir
 import os
 import numpy as np
+from assign_materials import assign_materials_colors
 from convert_map_type import convert_embedded_gltf_to_separated_gltf, convert_map_to_embedded_gltf, convert_map_to_obj
 from download_map_osm import download_file_with_bbox
 from rotate_map import rotate_gltf_file, rotate_obj_file
 import shutil
 
-bbox_coordinates = [22.06813,50.60732,22.08498,50.61350] # left, buttom, right, top
+bbox_coordinates = [20.85242,52.15483,20.86084,52.15782] # left, buttom, right, top
 
 rotation_matrix = np.array([[1,  0,  0],
-                            [0, -1,  0],
-                            [0,  0, -1]])
-rotation_quaterion = [1, 0, 0, 0]
+                            [0,  0, -1],
+                            [0,  1,  0]])
+rotation_quaterion = [-0.7071068, 0, 0, 0.7071068]
 
 def generate_map():
     if not os.path.exists("out"):
@@ -30,7 +31,8 @@ def generate_map():
     rotate_obj_file("temp/map.obj",out_directory + "/model/model.obj", rotation_matrix)
     convert_map_to_embedded_gltf("temp/map.osm","temp/map.gltf")
     rotate_gltf_file("temp/map.gltf","temp/model.gltf", rotation_quaterion)
-    convert_embedded_gltf_to_separated_gltf("temp/model.gltf", out_directory + "/model/model.gltf")
+    assign_materials_colors("temp/model.gltf","temp/model_colored.gltf")
+    convert_embedded_gltf_to_separated_gltf("temp/model_colored.gltf", out_directory + "/model/model.gltf")
 
     shutil.rmtree("temp", ignore_errors=True)
 
