@@ -9,9 +9,9 @@ from generate_minimap import coordinates_to_xy, generate_minimap
 from rotate_map import rotate_gltf_file, rotate_obj_file
 import shutil
 
-bbox_coordinates = [22.0601,50.5953,22.1224,50.6212] # left, buttom, right, top
+bbox_coordinates = [21.00425,52.21979,21.01293,52.22309] # left, buttom, right, top
 
-target_coordinates = [50.60856, 22.07789] #same point on map latitiude, longitiude
+target_coordinates = [52.22217,21.007] #some point on map latitiude, longitiude
 
 rotation_matrix = np.array([[ 0,  1,  0],
                             [ 0,  0, -1],
@@ -33,7 +33,7 @@ def generate_map():
     convert_map_to_obj("temp/map.osm","temp/map.obj")
     rotate_obj_file("temp/map.obj",out_directory + "/model/model.obj", rotation_matrix)
     convert_map_to_embedded_gltf("temp/map.osm","temp/map.gltf")
-    rotate_gltf_file("temp/map.gltf","https://en.wikipedia.org/wiki/Ptolemy%27s_Geographytemp/model.gltf", rotation_quaterion)
+    rotate_gltf_file("temp/map.gltf","temp/model.gltf", rotation_quaterion)
     assign_materials_colors("temp/model.gltf","temp/model_colored.gltf")
     convert_embedded_gltf_to_separated_gltf("temp/model_colored.gltf", out_directory + "/model/model.gltf")
     generate_minimap("temp/map.osm",bbox_coordinates,out_directory + "/model/minimap.png")
