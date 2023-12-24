@@ -1,5 +1,0 @@
-nodejs
-npm
-npm install -g gltf-pipeline
-
-pip install pygltflib numpy

@@ -42,9 +42,9 @@ if __name__ == "__main__":
 
     input_file = "map.obj"
     output_file = "map_rotated.obj"
-    rotation_matrix = np.array([[-1,  0,  0],
-                                [ 0, -1,  0],
-                                [ 0,  0, -1]])
+    rotation_matrix = np.array([[ 0,  1,  0],
+                            [ 0,  0, -1],
+                            [-1,  0,  0]])
     rotate_obj_file(input_file, output_file, rotation_matrix)
     
 
